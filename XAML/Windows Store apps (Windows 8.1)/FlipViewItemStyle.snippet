@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>FlipViewItemStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for FlipViewItem</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>FlipViewItemStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="FlipViewItem">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="VerticalContentAlignment" Value="Stretch" />
+		<Setter Property="TabNavigation" Value="Local" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="FlipViewItem">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<ContentPresenter Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>MenuFlyoutSeparatorStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for MenuFlyoutSeparator</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>MenuFlyoutSeparatorStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="MenuFlyoutSeparator">
+		<Setter Property="Background" Value="{ThemeResource MenuFlyoutSeparatorThemeBrush}" />
+		<Setter Property="Padding" Value="{ThemeResource MenuFlyoutSeparatorThemePadding}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="MenuFlyoutSeparator">
+					<Rectangle Fill="{TemplateBinding Background}" Margin="{TemplateBinding Padding}" Height="{ThemeResource MenuFlyoutSeparatorThemeHeight}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

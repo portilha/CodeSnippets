@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+    <Title>2X2 Grid</Title>
+    <Author>Microsoft Corporation</Author>
+    <Description>XAML snippet for a 2X2 Grid</Description>
+    <HelpUrl></HelpUrl>
+    <Shortcut>2by2Grid</Shortcut>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal Editable="true">
+        <ID>Height1</ID>
+        <ToolTip>Height of row 0</ToolTip>
+        <Default>*</Default>
+        <Function>
+        </Function>
+      </Literal>
+      <Literal Editable="true">
+        <ID>Height2</ID>
+        <ToolTip>Height of row 1</ToolTip>
+        <Default>*</Default>
+        <Function>
+        </Function>
+      </Literal>
+      <Literal Editable="true">
+        <ID>Width1</ID>
+        <ToolTip>Width of column 0</ToolTip>
+        <Default>*</Default>
+        <Function>
+        </Function>
+      </Literal>
+      <Literal Editable="true">
+        <ID>Width2</ID>
+        <ToolTip>Width of column 1</ToolTip>
+        <Default>*</Default>
+        <Function>
+        </Function>
+      </Literal>
+    </Declarations>
+    <Code Language="XAML">
+      <![CDATA[
+          <Grid>
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="$Width1$"/>
+                  <ColumnDefinition Width="$Width2$"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                  <RowDefinition Height="$Height1$"/>
+                  <RowDefinition Height="$Height2$"/>
+              </Grid.RowDefinitions>
+          </Grid>
+              ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

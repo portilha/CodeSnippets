@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>ScrollBarStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for ScrollBar</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>ScrollBarStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="ScrollBar">
+		<Setter Property="Background" Value="{StaticResource PhoneDisabledBrush}" />
+		<Setter Property="Padding" Value="1" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="MinWidth" Value="5" />
+		<Setter Property="MinHeight" Value="5" />
+		<Setter Property="IsHitTestVisible" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ScrollBar">
+					<Grid>
+						<Grid x:Name="VerticalRoot" Background="Transparent" Width="{TemplateBinding Width}" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<RepeatButton x:Name="VerticalSmallDecrease" Visibility="Collapsed" />
+							<RepeatButton x:Name="VerticalLargeDecrease" Template="{x:Null}" Width="0" Grid.Row="1" />
+							<Thumb x:Name="VerticalThumb" Width="{TemplateBinding Width}" MinHeight="72" Background="{TemplateBinding Background}" Margin="{TemplateBinding Padding}" Template="{StaticResource PhoneScrollbarThumb}" Grid.Row="2" />
+							<RepeatButton x:Name="VerticalLargeIncrease" Template="{x:Null}" Width="0" Grid.Row="3" />
+							<RepeatButton x:Name="VerticalSmallIncrease" Visibility="Collapsed" />
+						</Grid>
+						<Grid x:Name="HorizontalRoot" Background="Transparent" Height="{TemplateBinding Height}" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<RepeatButton x:Name="HorizontalSmallDecrease" Visibility="Collapsed" />
+							<RepeatButton x:Name="HorizontalLargeDecrease" Template="{x:Null}" Height="0" Grid.Column="1" />
+							<Thumb x:Name="HorizontalThumb" Height="{TemplateBinding Height}" MinWidth="72" Background="{TemplateBinding Background}" Margin="{TemplateBinding Padding}" Template="{StaticResource PhoneScrollbarThumb}" Grid.Column="2" />
+							<RepeatButton x:Name="HorizontalLargeIncrease" Template="{x:Null}" Height="0" Grid.Column="3" />
+							<RepeatButton x:Name="HorizontalSmallIncrease" Visibility="Collapsed" />
+						</Grid>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

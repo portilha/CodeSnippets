@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>HyperlinkButtonStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for HyperlinkButton</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>HyperlinkButtonStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="HyperlinkButton">
+		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="HyperlinkButton">
+					<Border Background="Transparent">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="MouseOver" />
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextElement" Storyboard.TargetProperty="Foreground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextElement" Storyboard.TargetProperty="Foreground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Border Background="{TemplateBinding Background}" Margin="{StaticResource PhoneHorizontalMargin}" Padding="{TemplateBinding Padding}">
+							<TextBlock x:Name="TextElement" Text="{TemplateBinding Content}" TextDecorations="Underline" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+						</Border>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

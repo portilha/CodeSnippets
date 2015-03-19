@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>TextBoxStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for TextBox</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>TextBoxStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="TextBox">
+								<Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}" />
+								<Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}" />
+								<Setter Property="Foreground" Value="{ThemeResource TextBoxForegroundThemeBrush}" />
+								<Setter Property="Background" Value="{ThemeResource TextBoxBackgroundThemeBrush}" />
+								<Setter Property="BorderBrush" Value="{ThemeResource TextBoxBorderThemeBrush}" />
+								<Setter Property="SelectionHighlightColor" Value="{ThemeResource TextSelectionHighlightColorThemeBrush}" />
+								<Setter Property="BorderThickness" Value="{ThemeResource TextControlBorderThemeThickness}" />
+								<Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+								<Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+								<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+								<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+								<Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+								<Setter Property="Padding" Value="{ThemeResource TextControlThemePadding}" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="TextBox">
+											<Grid>
+												<VisualStateManager.VisualStateGroups>
+													<VisualStateGroup x:Name="CommonStates" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+														<VisualState x:Name="Disabled">
+															<Storyboard>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundElement" Storyboard.TargetProperty="Background">
+																	<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxDisabledBackgroundThemeBrush}" />
+																</ObjectAnimationUsingKeyFrames>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
+																	<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxDisabledBorderThemeBrush}" />
+																</ObjectAnimationUsingKeyFrames>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
+																	<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
+																</ObjectAnimationUsingKeyFrames>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
+																	<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
+																</ObjectAnimationUsingKeyFrames>
+															</Storyboard>
+														</VisualState>
+														<VisualState x:Name="Normal">
+															<Storyboard>
+																<DoubleAnimation Storyboard.TargetName="BackgroundElement" Storyboard.TargetProperty="Opacity" Duration="0" To="{ThemeResource TextControlBackgroundThemeOpacity}" />
+																<DoubleAnimation Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Opacity" Duration="0" To="{ThemeResource TextControlBorderThemeOpacity}" />
+															</Storyboard>
+														</VisualState>
+														<VisualState x:Name="PointerOver">
+															<Storyboard>
+																<DoubleAnimation Storyboard.TargetName="BackgroundElement" Storyboard.TargetProperty="Opacity" Duration="0" To="{ThemeResource TextControlPointerOverBackgroundThemeOpacity}" />
+																<DoubleAnimation Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Opacity" Duration="0" To="{ThemeResource TextControlPointerOverBorderThemeOpacity}" />
+															</Storyboard>
+														</VisualState>
+														<VisualState x:Name="Focused" />
+													</VisualStateGroup>
+													<VisualStateGroup x:Name="ButtonStates" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+												</VisualStateManager.VisualStateGroups>
+												<Grid.RowDefinitions>
+													<RowDefinition Height="Auto" />
+													<RowDefinition Height="*" />
+												</Grid.RowDefinitions>
+												<Border x:Name="BackgroundElement" Grid.Row="1" Background="{TemplateBinding Background}" Margin="{TemplateBinding BorderThickness}" Grid.RowSpan="1" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+												<Border x:Name="BorderElement" Grid.Row="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.RowSpan="1" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+												<ContentPresenter x:Name="HeaderContentPresenter" Grid.Row="0" Foreground="{ThemeResource TextBoxForegroundHeaderThemeBrush}" Margin="0,4,0,4" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" FontWeight="Semilight" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+												<ScrollViewer x:Name="ContentElement" Grid.Row="1" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" IsTabStop="False" AutomationProperties.AccessibilityView="Raw" ZoomMode="Disabled" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+												<ContentControl x:Name="PlaceholderTextContentPresenter" Grid.Row="1" Foreground="{ThemeResource TextBoxPlaceholderTextThemeBrush}" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" IsTabStop="False" Grid.ColumnSpan="2" Content="{TemplateBinding PlaceholderText}" IsHitTestVisible="False" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+											</Grid>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

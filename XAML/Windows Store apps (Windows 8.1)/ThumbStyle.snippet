@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>ThumbStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for Thumb</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>ThumbStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="Thumb">
+								<Setter Property="BorderThickness" Value="1" />
+								<Setter Property="BorderBrush" Value="{ThemeResource SliderThumbBorderThemeBrush}" />
+								<Setter Property="Background" Value="{ThemeResource SliderThumbBackgroundThemeBrush}" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="Thumb">
+											<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

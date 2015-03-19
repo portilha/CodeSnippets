@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>ToolTipStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for ToolTip</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>ToolTipStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="ToolTip">
+		<Setter Property="Foreground" Value="{StaticResource ToolTipForegroundThemeBrush}" />
+		<Setter Property="Background" Value="{StaticResource ToolTipBackgroundThemeBrush}" />
+		<Setter Property="BorderBrush" Value="{StaticResource ToolTipBorderThemeBrush}" />
+		<Setter Property="BorderThickness" Value="{StaticResource ToolTipBorderThemeThickness}" />
+		<Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+		<Setter Property="FontSize" Value="{StaticResource ToolTipContentThemeFontSize}" />
+		<Setter Property="Padding" Value="10,6,10,7" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ToolTip">
+					<Border x:Name="LayoutRoot" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="OpenStates">
+								<VisualState x:Name="Closed">
+									<Storyboard>
+										<FadeOutThemeAnimation TargetName="LayoutRoot" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Opened">
+									<Storyboard>
+										<FadeInThemeAnimation TargetName="LayoutRoot" />
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<ContentPresenter Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>GroupItemStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for GroupItem</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>GroupItemStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="GroupItem">
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GroupItem">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<ContentControl x:Name="HeaderContent" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" Margin="{TemplateBinding Padding}" TabIndex="0" IsTabStop="False" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+							<ItemsControl x:Name="ItemsControl" Grid.Row="1" ItemsSource="{Binding GroupItems}" IsTabStop="False" TabNavigation="Once" TabIndex="1" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<ItemsControl.ItemContainerTransitions>
+									<TransitionCollection>
+										<AddDeleteThemeTransition />
+										<ContentThemeTransition />
+										<ReorderThemeTransition />
+										<EntranceThemeTransition IsStaggeringEnabled="False" />
+									</TransitionCollection>
+								</ItemsControl.ItemContainerTransitions>
+							</ItemsControl>
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

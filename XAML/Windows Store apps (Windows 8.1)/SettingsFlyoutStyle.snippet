@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>SettingsFlyoutStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for SettingsFlyout</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>SettingsFlyoutStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="SettingsFlyout">
+		<Setter Property="RequestedTheme" Value="Light" />
+		<Setter Property="HeaderBackground" Value="{ThemeResource SettingsFlyoutHeaderBackgroundThemeBrush}" />
+		<Setter Property="HeaderForeground" Value="{ThemeResource SettingsFlyoutHeaderForegroundThemeBrush}" />
+		<Setter Property="Background" Value="{ThemeResource SettingsFlyoutBackgroundThemeBrush}" />
+		<Setter Property="BorderThickness" Value="1,0,0,0" />
+		<Setter Property="Padding" Value="39,33,40,33" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Top" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+		<Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
+		<Setter Property="Width" Value="346" />
+		<Setter Property="MinWidth" Value="320" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="SettingsFlyout">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.BorderBrush}" BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.BorderThickness}">
+						<Border.Resources>
+							<Style x:Key="BackButtonStyle" TargetType="Button" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<Setter Property="FontFamily" Value="{ThemeResource SymbolThemeFontFamily}" />
+								<Setter Property="FontSize" Value="39" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="Button">
+											<Grid x:Name="RootGrid">
+												<Grid Margin="-12,-16,-10,-10" Background="Transparent">
+													<Ellipse x:Name="Background" Fill="Transparent" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" Height="30" Width="30" Margin="12,0,0,0" HorizontalAlignment="Left" />
+													<TextBlock x:Name="NormalGlyph" FontWeight="SemiLight" Text="" Margin="10,0,0,0" Foreground="{TemplateBinding Foreground}" AutomationProperties.AccessibilityView="Raw" />
+													<Ellipse x:Name="PressedBackground" Fill="{TemplateBinding Foreground}" StrokeThickness="0" Height="30" Width="30" Margin="12,0,0,0" HorizontalAlignment="Left" Opacity="0" />
+													<TextBlock x:Name="PressedGlyph" FontWeight="SemiLight" Text="" Margin="10,0,0,0" Foreground="{TemplateBinding Background}" Opacity="0" AutomationProperties.AccessibilityView="Raw" />
+												</Grid>
+												<Rectangle x:Name="FocusVisualWhite" Margin="-3,-6,-3,0" IsHitTestVisible="False" Stroke="{ThemeResource FocusVisualWhiteStrokeThemeBrush}" StrokeEndLineCap="Square" StrokeDashArray="1,1" Opacity="0" StrokeDashOffset="1.5" />
+												<Rectangle x:Name="FocusVisualBlack" Margin="-3,-6,-3,0" IsHitTestVisible="False" Stroke="{ThemeResource FocusVisualBlackStrokeThemeBrush}" StrokeEndLineCap="Square" StrokeDashArray="1,1" Opacity="0" StrokeDashOffset="0.5" />
+												<VisualStateManager.VisualStateGroups>
+													<VisualStateGroup x:Name="CommonStates">
+														<VisualState x:Name="Normal" />
+														<VisualState x:Name="PointerOver">
+															<Storyboard>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Background" Storyboard.TargetProperty="Fill">
+																	<DiscreteObjectKeyFrame Value="{ThemeResource SettingsFlyoutBackButtonPointerOverBackgroundThemeBrush}" KeyTime="0" />
+																</ObjectAnimationUsingKeyFrames>
+															</Storyboard>
+														</VisualState>
+														<VisualState x:Name="Pressed">
+															<Storyboard>
+																<DoubleAnimation Storyboard.TargetName="PressedBackground" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+																<DoubleAnimation Storyboard.TargetName="PressedGlyph" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+															</Storyboard>
+														</VisualState>
+														<VisualState x:Name="Disabled">
+															<Storyboard>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Visibility">
+																	<DiscreteObjectKeyFrame Value="Collapsed" KeyTime="0" />
+																</ObjectAnimationUsingKeyFrames>
+															</Storyboard>
+														</VisualState>
+													</VisualStateGroup>
+													<VisualStateGroup x:Name="FocusStates">
+														<VisualState x:Name="Focused">
+															<Storyboard>
+																<DoubleAnimation Storyboard.TargetName="FocusVisualWhite" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+																<DoubleAnimation Storyboard.TargetName="FocusVisualBlack" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+															</Storyboard>
+														</VisualState>
+														<VisualState x:Name="Unfocused" />
+														<VisualState x:Name="PointerFocused" />
+													</VisualStateGroup>
+													<VisualStateGroup x:Name="SettingsEdgeLocationStates">
+														<VisualState x:Name="Right" />
+														<VisualState x:Name="Left">
+															<Storyboard>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalGlyph" Storyboard.TargetProperty="Text">
+																	<DiscreteObjectKeyFrame Value="" KeyTime="0" />
+																</ObjectAnimationUsingKeyFrames>
+																<ObjectAnimationUsingKeyFrames Storyboard.TargetName="PressedGlyph" Storyboard.TargetProperty="Text">
+																	<DiscreteObjectKeyFrame Value="" KeyTime="0" />
+																</ObjectAnimationUsingKeyFrames>
+															</Storyboard>
+														</VisualState>
+													</VisualStateGroup>
+												</VisualStateManager.VisualStateGroups>
+											</Grid>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</Border.Resources>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="80" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid x:Name="Header" Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.HeaderBackground}" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions>
+								<Button x:Name="BackButton" Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.HeaderForeground}" Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.HeaderBackground}" Margin="39,0,0,12" Height="30" Width="30" Style="{StaticResource BackButtonStyle}" VerticalAlignment="Bottom" />
+								<TextBlock Text="{TemplateBinding Title}" Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.HeaderForeground}" FontFamily="{ThemeResource SettingsFlyoutHeaderThemeFontFamily}" FontWeight="SemiLight" FontSize="{ThemeResource SettingsFlyoutHeaderThemeFontSize}" TextTrimming="CharacterEllipsis" Grid.Column="1" VerticalAlignment="Bottom" Margin="10,0,0,13" />
+								<Image Height="30" Width="30" Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.IconSource}" Grid.Column="2" Margin="0,0,40,15" VerticalAlignment="Bottom" />
+							</Grid>
+							<ScrollViewer x:Name="ScrollViewer" Grid.Row="1" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}" AutomationProperties.AccessibilityView="Raw" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.ContentTransitions}" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+							</ScrollViewer>
+							<Rectangle x:Name="InputPanePlaceholder" Grid.Row="2" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

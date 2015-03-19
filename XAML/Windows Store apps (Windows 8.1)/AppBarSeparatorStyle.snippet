@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>AppBarSeparatorStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for AppBarSeparator</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>AppBarSeparatorStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="AppBarSeparator">
+		<Setter Property="Foreground" Value="{ThemeResource AppBarSeparatorForegroundThemeBrush}" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="AppBarSeparator">
+					<Rectangle x:Name="SeparatorRectangle" Width="1" Height="40" Fill="{TemplateBinding Foreground}" Margin="29,14,30,0" VerticalAlignment="Top" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="ApplicationViewStates">
+								<!-- FullSize is used when we are in landscape or filled mode -->
+								<VisualState x:Name="FullSize" />
+								<!-- Compact is used when we are in portrait or snapped mode -->
+								<VisualState x:Name="Compact">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="SeparatorRectangle" Storyboard.TargetProperty="Margin">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="19,14,20,0" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+					</Rectangle>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

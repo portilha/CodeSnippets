@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>HubStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for Hub</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>HubStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="Hub">
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="Padding" Value="40,60,40,0" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Hub">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="OrientationStates" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<VisualState x:Name="Horizontal" />
+								<VisualState x:Name="Vertical">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="HorizontalScrollMode">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Disabled" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="HorizontalScrollBarVisibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Disabled" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="VerticalScrollMode">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Auto" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="VerticalScrollBarVisibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Auto" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="(Grid.Row)">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="(Grid.RowSpan)">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="Margin">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="0,20,0,0" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<ScrollViewer x:Name="ScrollViewer" Grid.RowSpan="2" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled" HorizontalSnapPointsAlignment="Near" HorizontalSnapPointsType="Optional" VerticalSnapPointsAlignment="Near" VerticalSnapPointsType="Optional" ZoomMode="Disabled" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<ItemsStackPanel x:Name="Panel" Orientation="{TemplateBinding Orientation}" CacheLength="20" />
+							</ScrollViewer>
+							<Border x:Name="HeaderHost" Grid.Row="0" Padding="{TemplateBinding Padding}" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" FontSize="{ThemeResource HubHeaderThemeFontSize}" FontWeight="{ThemeResource HubHeaderThemeFontWeight}" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" OpticalMarginAlignment="TrimSideBearings" TextLineBounds="Tight" />
+							</Border>
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

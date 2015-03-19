@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>ToggleButtonStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for ToggleButton</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>ToggleButtonStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="ToggleButton">
+		<Setter Property="Background" Value="{StaticResource PhoneRadioCheckBoxBrush}" />
+		<Setter Property="BorderBrush" Value="{StaticResource PhoneRadioCheckBoxBorderBrush}" />
+		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="0" />
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

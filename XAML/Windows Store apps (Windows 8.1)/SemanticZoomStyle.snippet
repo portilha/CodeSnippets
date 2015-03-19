@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>SemanticZoomStyle</Title>
+		<Author>Microsoft Corporation</Author>
+		<Description>Style for SemanticZoom</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>Key</ID>
+				<Default>SemanticZoomStyle</Default>
+				<ToolTip>Name of the Key</ToolTip>
+			</Literal>
+		</Declarations>
+		<Code Language="XAML">
+			<![CDATA[<Style x:Key="$Key$" TargetType="SemanticZoom">
+		<Setter Property="Padding" Value="3" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="TabNavigation" Value="Once" />
+		<Setter Property="ScrollViewer.HorizontalScrollMode" Value="Enabled" />
+		<Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="False" />
+		<Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled" />
+		<Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="SemanticZoom">
+					<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="SemanticZoomStates" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<VisualState x:Name="ZoomInView">
+									<Storyboard>
+										<FadeOutThemeAnimation TargetName="ZoomedOutPresenter" />
+										<FadeInThemeAnimation TargetName="ZoomedInPresenter" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="ZoomOutView">
+									<Storyboard>
+										<FadeOutThemeAnimation TargetName="ZoomedInPresenter" />
+										<FadeInThemeAnimation TargetName="ZoomedOutPresenter" />
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="ZoomOutButtonStates" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+								<VisualStateGroup.Transitions>
+									<VisualTransition From="ZoomOutButtonVisible" To="ZoomOutButtonHidden">
+										<Storyboard BeginTime="0:0:3">
+											<FadeOutThemeAnimation TargetName="ZoomOutButton" />
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible" Storyboard.TargetName="ZoomOutButton">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<x:Boolean>False</x:Boolean>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualTransition>
+								</VisualStateGroup.Transitions>
+								<VisualState x:Name="ZoomOutButtonVisible">
+									<Storyboard>
+										<FadeInThemeAnimation TargetName="ZoomOutButton" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="ZoomOutButtonHidden">
+									<Storyboard>
+										<FadeOutThemeAnimation TargetName="ZoomOutButton" />
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible" Storyboard.TargetName="ZoomOutButton">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<x:Boolean>False</x:Boolean>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<ScrollViewer x:Name="ScrollViewer" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="Hidden" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" VerticalScrollBarVisibility="Hidden" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" ZoomMode="Enabled" IsZoomChainingEnabled="True" IsZoomInertiaEnabled="False" IsScrollInertiaEnabled="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinZoomFactor="0.5" MaxZoomFactor="1.0" AutomationProperties.AccessibilityView="Raw" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+							<ScrollViewer.Template>
+								<ControlTemplate TargetType="ScrollViewer">
+									<ScrollContentPresenter x:Name="ScrollContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
+								</ControlTemplate>
+							</ScrollViewer.Template>
+							<Border RenderTransformOrigin="0, 0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+								<Border.RenderTransform>
+									<CompositeTransform x:Name="ManipulatedElementTransform" />
+								</Border.RenderTransform>
+								<Grid Margin="{TemplateBinding Padding}">
+									<ContentPresenter x:Name="ZoomedInPresenter" RenderTransformOrigin="0.5, 0.5" Visibility="Collapsed" IsHitTestVisible="False" Content="{TemplateBinding ZoomedInView}">
+										<ContentPresenter.RenderTransform>
+											<CompositeTransform x:Name="ZoomedInTransform" />
+										</ContentPresenter.RenderTransform>
+									</ContentPresenter>
+									<ContentPresenter x:Name="ZoomedOutPresenter" RenderTransformOrigin="0.5, 0.5" Content="{TemplateBinding ZoomedOutView}" IsHitTestVisible="False" Visibility="Collapsed">
+										<ContentPresenter.RenderTransform>
+											<CompositeTransform x:Name="ZoomedOutTransform" />
+										</ContentPresenter.RenderTransform>
+									</ContentPresenter>
+								</Grid>
+							</Border>
+						</ScrollViewer>
+						<Button x:Name="ZoomOutButton" IsTabStop="False" Margin="0,0,7,24" HorizontalAlignment="Right" VerticalAlignment="Bottom" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+							<Button.Template>
+								<ControlTemplate TargetType="Button">
+									<Border x:Name="Root" Height="21" Width="21" Background="{ThemeResource SemanticZoomButtonBackgroundThemeBrush}" BorderBrush="{ThemeResource SemanticZoomButtonBorderThemeBrush}" BorderThickness="1">
+										<VisualStateManager.VisualStateGroups>
+											<VisualStateGroup x:Name="NormalStates">
+												<VisualState x:Name="Normal" />
+												<VisualState x:Name="PointerOver">
+													<Storyboard>
+														<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+															<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SemanticZoomButtonPointerOverBackgroundThemeBrush}" />
+														</ObjectAnimationUsingKeyFrames>
+														<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="BorderBrush">
+															<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SemanticZoomButtonPointerOverBorderThemeBrush}" />
+														</ObjectAnimationUsingKeyFrames>
+														<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+															<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SemanticZoomButtonPointerOverForegroundThemeBrush}" />
+														</ObjectAnimationUsingKeyFrames>
+													</Storyboard>
+												</VisualState>
+												<VisualState x:Name="Pressed">
+													<Storyboard>
+														<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+															<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SemanticZoomButtonPressedBackgroundThemeBrush}" />
+														</ObjectAnimationUsingKeyFrames>
+														<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="BorderBrush">
+															<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SemanticZoomButtonPressedBorderThemeBrush}" />
+														</ObjectAnimationUsingKeyFrames>
+														<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+															<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SemanticZoomButtonPressedForegroundThemeBrush}" />
+														</ObjectAnimationUsingKeyFrames>
+													</Storyboard>
+												</VisualState>
+											</VisualStateGroup>
+										</VisualStateManager.VisualStateGroups>
+										<TextBlock x:Name="Glyph" Text="" UseLayoutRounding="False" Margin="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource SemanticZoomButtonForegroundThemeBrush}" FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="{ThemeResource SemanticZoomButtonFontSize}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>
